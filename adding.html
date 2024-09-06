@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td {
+  border: 1px solid black;
+}
+#message {
+  color: rgb(4, 4, 4);
+  font-weight: bold;
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<p>Click the buttons to create and delete row(s) for the table.</p>
+
+<table id="myTable">
+  <tr>
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+  </tr>
+  <tr>
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+  </tr>
+  <tr>
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+  </tr>
+  <tr>
+    <td>Row4 cell1</td>
+    <td>Row4 cell2</td>
+  </tr>
+  <tr>
+    <td>Row5 cell1</td>
+    <td>Row5 cell2</td>
+  </tr>
+</table>
+<br>
+
+<p id="message">No more rows to delete!</p>
+
+<button onclick="myCreateFunction()">Create row</button>
+<button onclick="myDeleteFunction()">Delete row</button>
+
+
+
+<script>
+let rowCounter = 6;
+
+function myCreateFunction() {
+  const table = document.getElementById("myTable");
+  const message = document.getElementById("message");
+
+  
+  message.style.display = 'none';
+
+  const row = table.insertRow(-1);
+  const cell1 = row.insertCell(0);
+  const cell2 = row.insertCell(1);
+  cell1.innerHTML = `Row${rowCounter} cell1`;
+  cell2.innerHTML = `Row${rowCounter} cell2`;
+  rowCounter++;
+}
+
+function myDeleteFunction() {
+  const table = document.getElementById("myTable");
+  const message = document.getElementById("message");
+
+  if (table.rows.length > 0) {
+    table.deleteRow(0); 
+  }
+
+  
+  if (table.rows.length === 0) {
+    message.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
